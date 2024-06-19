@@ -19,7 +19,7 @@
         <form id="search-form">
           <input
             type="search"
-            placeholder="Enter a city"
+            placeholder="Enter a location (city)"
             required
             class="search-input"
             id="search-input"
@@ -28,23 +28,21 @@
         </form>
       </header>
       <main>
-        <h1 class="city" id="city">Johannesburg<br />
-        <em class="date" id="date">Sunday,  11:43</em>
-        </h1>
-        <br />
         <div class="current-weather">
-            <p class="current-predictions">
-              Humidity: <span id="humidity">60%</span> <br />
-              Wind Speed: <span class="wind-speed">42km/h</span>
+          <div>
+            <h1 class="current-city" id="current-city">Paris</h1>
+            <p class="current-details">
+              <span id="current-date"></span>,<span id="description">sunny</span
+              ><br />
+              Humidity: <strong id="humidity">87%</strong>, Wind:
+              <strong id="wind-speed">7.2km/h</strong>
             </p>
           </div>
-          <div class="current-temperature-details">
-            <span class="current-temperature-icon" id="icon"></span> <br />
-            <span class="current-weather-description" id="description">Sunny</span>
-          </div>
           <div class="current-temperature">
-            <span class="current-temperature">20</span>
-            <span class="current-temperature-unit">°C</span>
+            <span class="current-temperature-icon">☀️</span
+            ><span class="current-temperature-value" id="current-temperature"
+              >24</span
+            ><span class="current-temperature-unit">°C</span>
           </div>
         </div>
       </main>
@@ -52,7 +50,7 @@
         <p>
           This project was coded by
           <a href="#" target="_blank">Nicolia X</a> and is
-          <a href="#" target="_blank"> open-sourced on GitHub</a> and
+          <a href="#" target="_blank"> on GitHub</a> and
           <a href="#" target="_blank">hosted on Netlify</a>
         </p>
       </footer>
