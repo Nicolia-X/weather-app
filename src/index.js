@@ -4,6 +4,7 @@ function updateTemperature(response) {
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
+  let windSpeedElement = document.querySelector("#wind-speed");
   let iconElement = document.querySelector("#icon");
   let timeElement = document.querySelector("#time");
   let date = new Date(response.data.time * 1000);
@@ -13,8 +14,8 @@ function updateTemperature(response) {
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   windSpeedElement.innerHTML = `${response.data.wind.speed}km/h`;
-  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="icon"`;
-  timeElement.innerHTML = formatDate;
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="current-temperature-icon" />`;
+  timeElement.innerHTML = `${formatDate(date)} `;
 }
 
 function searchCity(city) {
@@ -24,12 +25,17 @@ function searchCity(city) {
   axios.get(apiUrl).then(updateTemperature);
 }
 
-function search(event) {
+function searchCitySubmit(event) {
   event.preventDefault();
   let searchInputElement = document.querySelector("#search-input");
 
-  searchCity(searchInput.value);
+  searchCity(searchInputElement.value);
 }
+
+let searchFormElement = document.querySelector("#search-form");
+searchFormElement.addEventListener("submit", searchCitySubmit);
+
+searchCity("Johannesburg");
 
 function formatDate(date) {
   let minutes = date.getMinutes();
@@ -44,7 +50,6 @@ function formatDate(date) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
@@ -55,8 +60,3 @@ function formatDate(date) {
 
   return `${day} ${hours}:${minutes}`;
 }
-
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", search);
-
-searchCity("Johannesburg");

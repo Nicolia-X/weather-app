@@ -74,22 +74,23 @@ main {
   color: rgba(39, 33, 66, 0.4);
   font-size: 16px;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 30px;
 }
 
 .current-details strong {
-  color: #fff;
+  color: #d8912d;
 }
 
 .current-temperature-icon {
-  position: relative;
-  top: -8px;
-  font-size: 36px;
-  margin-right: 10px;
+  top: -20px;
+  display: inline;
+  margin: 0 auto;
+  padding: 0;
+  height: 80px;
 }
 
 .current-temperature-value {
-  font-size: 75px;
+  font-size: 85px;
   font-weight: bold;
   color: #fff;
 }
@@ -97,7 +98,7 @@ main {
 .current-temperature-unit {
   font-size: 28px;
   position: relative;
-  top: -40px;
+  top: -38px;
   color: #fff;
 }
 
