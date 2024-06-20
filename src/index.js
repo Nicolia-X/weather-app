@@ -1,17 +1,27 @@
+function updateTemperature(response) {
+  let temperatureElement = document.querySelector("#temperature");
+  let temperature = Math.round(response.data.temperature.current);
+  let cityElement = document.querySelector("#city");
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let iconElement = document.querySelector("#icon");
+  let timeElement = document.querySelector("#time");
+  let date = new Date(response.data.time * 1000);
+
+  cityElement.innerHTML = response.data.city;
+  temperatureElement.innerHTML = temperature;
+  descriptionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+  windSpeedElement.innerHTML = `${response.data.wind.speed}km/h`;
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="icon"`;
+  timeElement.innerHTML = formatDate;
+}
+
 function searchCity(city) {
   let apiKey = "38fd65bf84o27e30f1bfb1a6d59t9604";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(updateTemperature);
-}
-
-function updateTemperature(response) {
-  let temperatureElement = document.querySelector("#current-temperature");
-  let temperature = Math.round(response.data.temperature.current);
-  let cityElement = document.querySelector("#current-city");
-
-  cityElement.innerHTML = response.data.city;
-  temperatureElement.innerHTML = temperature;
 }
 
 function search(event) {
@@ -52,7 +62,3 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
 searchCity("Johannesburg");
-
-let currentDate = new Date();
-
-currentDateELement.innerHTML = formatDate(currentDate);
